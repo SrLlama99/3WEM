@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="540.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.dam.di.formularioalta.FormularioController">
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+   <top>
+      <Label text="Inscripción en el ciclo" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="System Bold" size="22.0" />
+         </font>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <padding>
+            <Insets left="14.0" />
+         </padding>
+      </Label>
+   </top>
+   <center>
+      <GridPane hgap="12.0" vgap="10.0" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="150.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="Nombre completo:" />
+            <TextField fx:id="txtNombre" promptText="Nombre y apellidos" GridPane.columnIndex="1" />
+            <Label text="Correo elecrtónico:" GridPane.rowIndex="1" />
+            <TextField fx:id="txtCorreo" promptText="nombre@dominio.es" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label text="Ciclo:" GridPane.rowIndex="2" />
+            <ComboBox fx:id="cbCiclo" maxWidth="1.7976931348623157E308" prefWidth="150.0" promptText="Elige un ciclo" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label text="Curso:" GridPane.rowIndex="3" />
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <children>
+                  <RadioButton fx:id="rbPrimero" mnemonicParsing="false" selected="true" text="1º">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="tgCurso" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton mnemonicParsing="false" text="2º" toggleGroup="$tgCurso" />
+               </children>
+            </HBox>
+            <Label text="Fecha de nacimiento:" GridPane.rowIndex="4" />
+            <DatePicker fx:id="dpNacimiento" maxWidth="1.7976931348623157E308" promptText="dd/mm/aaaa" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label text="Módulos matriculados:" GridPane.rowIndex="5" />
+            <Spinner fx:id="spnModulos" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <CheckBox fx:id="chkCondiciones" mnemonicParsing="false" text="Acepto las condiciones de uso de mis datos" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+         </children>
+      </GridPane>
+   </center>
+   <bottom>
+      <VBox prefHeight="87.0" prefWidth="500.0" spacing="10.0" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets top="16.0" />
+         </BorderPane.margin>
+         <children>
+            <HBox alignment="CENTER_RIGHT" prefHeight="94.0" prefWidth="500.0" spacing="10.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#limpiar" text="Limpiar" />
+                  <Button fx:id="btnEnviar" defaultButton="true" mnemonicParsing="false" onAction="#enviar" text="Enviar" />
+               </children>
+            </HBox>
+            <Label fx:id="lblResultado" alignment="TOP_LEFT" minHeight="84.0" wrapText="true" />
+         </children>
+      </VBox>
+   </bottom>
+</BorderPane>
