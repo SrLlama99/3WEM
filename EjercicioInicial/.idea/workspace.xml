@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="70ecf933-38a6-44ee-b75b-c7be17f8708a" name="Changes" comment="" />
+    <list default="true" id="70ecf933-38a6-44ee-b75b-c7be17f8708a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../PSP/src/procesosSimples/EjercicioLaboratorio/AnalizaOrina.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PSP/src/procesosSimples/EjercicioLaboratorio/AnalizaSangre.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PSP/src/procesosSimples/EjercicioLaboratorio/Laboratorio.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PSP/src/procesosSimples/EjercicioLaboratorioFiles/AnalizaLeucocitos.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../PSP/src/procesosSimples/EjercicioLaboratorioFiles/data.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -78,6 +86,8 @@
       <workItem from="1790329563415" duration="555000" />
       <workItem from="1790845744901" duration="44000" />
       <workItem from="1790845794075" duration="1000" />
+      <workItem from="1790939918816" duration="18000" />
+      <workItem from="1790939964908" duration="44000" />
     </task>
     <servers />
   </component>
