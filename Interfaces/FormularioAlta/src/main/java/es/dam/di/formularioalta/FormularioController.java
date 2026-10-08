@@ -33,41 +33,41 @@ public class FormularioController {
         String nombre = txtNombre.getText().trim();
         String correo = txtCorreo.getText().trim();
         LocalDate fecha = dpNacimiento.getValue();
-        if (nombre.isEmpty()) {
-            errores.add("Escribe tu nombre.");
-        }
-        if (!correo.matches("[^@\\s]+@[^@\\s]+\\.[^@\\s]+")) {
-            errores.add("El correo electrónico no es válido.");
-        }
-        if (cbCiclo.getValue() == null) {
-            errores.add("Elige un ciclo.");
-        }
-        if (fecha == null || !fecha.isBefore(LocalDate.now())) {
-            errores.add("Indica una fecha de nacimiento anterior a hoy.");
-        }
-        if (!errores.isEmpty()) {
-            mostrar(String.join("\n", errores), false);
-            return;
-        }
-        RadioButton curso = (RadioButton) tgCurso.getSelectedToggle();
-        mostrar("Inscripción registrada: " + nombre + " · " + curso.getText() + " " +
-                cbCiclo.getValue()
-                + " · " + spnModulos.getValue() + " módulos.", true);
+        boolean nombreMal = nombre.isEmpty();
+        boolean correoMal = !correo.matches("[^@\\s]+@[^@\\s]+\\.[^@\\s]+");
+        boolean cicloMal = cbCiclo.getValue() == null;
+        boolean fechaMal = fecha == null || !fecha.isBefore(LocalDate.now());
+
+        if (nombreMal) errores.add("Escribe tu nombre.");
+        if (correoMal) errores.add("El correo electrónico no es válido.");
+        if (cicloMal) errores.add("Elige un ciclo.");
+        if (fechaMal) errores.add("Indica una fecha de nacimiento anterior a hoy.");
+
+        marcar(txtNombre, nombreMal);
+        marcar(txtCorreo, correoMal);
+        marcar(cbCiclo, cicloMal);
+        marcar(dpNacimiento, fechaMal);
+
     }
     @FXML
     private void limpiar() {
-        txtNombre.clear();
-        txtCorreo.clear();
-        cbCiclo.setValue(null);
-        rbPrimero.setSelected(true);
-        dpNacimiento.setValue(null);
-        spnModulos.getValueFactory().setValue(6);
-        chkCondiciones.setSelected(false);
-        lblResultado.setText("");
+        txtNombre.textProperty().addListener((obs, antes, ahora) -> marcar(txtNombre, false));
+        txtCorreo.textProperty().addListener((obs, antes, ahora) -> marcar(txtCorreo, false));
+        cbCiclo.valueProperty().addListener((obs, antes, ahora) -> marcar(cbCiclo, false));
+        dpNacimiento.valueProperty().addListener((obs, antes, ahora) -> marcar(dpNacimiento, false));
+
     }
     private void mostrar(String texto, boolean correcto) {
         lblResultado.setText(texto);
-        lblResultado.setTextFill(correcto ? Color.web("#15803d") :
-                Color.web("#b91c1c"));
+        lblResultado.getStyleClass().removeAll("mensaje-ok", "mensaje-error");
+        lblResultado.getStyleClass().add(correcto ? "mensaje-ok" : "mensaje-error");
     }
+
+    private void marcar(Control campo, boolean conError) {
+        campo.getStyleClass().remove("campo-error");
+        if (conError) {
+            campo.getStyleClass().add("campo-error");
+        }
+    }
+
 }

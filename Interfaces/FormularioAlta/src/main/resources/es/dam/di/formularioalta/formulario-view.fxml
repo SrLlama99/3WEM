@@ -18,8 +18,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="540.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.dam.di.formularioalta.FormularioController">
+<BorderPane fx:id="raiz" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="540.0" stylesheets="@estilos.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.dam.di.formularioalta.FormularioController">
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
    </padding>
@@ -54,7 +53,7 @@
          <children>
             <Label text="Nombre completo:" />
             <TextField fx:id="txtNombre" promptText="Nombre y apellidos" GridPane.columnIndex="1" />
-            <Label text="Correo elecrtónico:" GridPane.rowIndex="1" />
+            <Label text="Correo electrónico:" GridPane.rowIndex="1" />
             <TextField fx:id="txtCorreo" promptText="nombre@dominio.es" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label text="Ciclo:" GridPane.rowIndex="2" />
             <ComboBox fx:id="cbCiclo" maxWidth="1.7976931348623157E308" prefWidth="150.0" promptText="Elige un ciclo" GridPane.columnIndex="1" GridPane.rowIndex="2" />
@@ -86,7 +85,7 @@
             <HBox alignment="CENTER_RIGHT" prefHeight="94.0" prefWidth="500.0" spacing="10.0">
                <children>
                   <Button mnemonicParsing="false" onAction="#limpiar" text="Limpiar" />
-                  <Button fx:id="btnEnviar" defaultButton="true" mnemonicParsing="false" onAction="#enviar" text="Enviar" />
+                  <Button fx:id="btnEnviar" defaultButton="true" mnemonicParsing="false" onAction="#enviar" styleClass="boton-primario" text="Enviar" />
                </children>
             </HBox>
             <Label fx:id="lblResultado" alignment="TOP_LEFT" minHeight="84.0" wrapText="true" />

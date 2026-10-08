@@ -1,0 +1,42 @@
+/* Hoja de estilos principal. Se enlaza en el FXML (propiedad Stylesheets de la raíz) */
+.root {
+    -color-primario: #5a4fcf;          /* variable propia (looked-up color) */
+    -fx-accent: -color-primario;        /* color de selección de Modena */
+    -fx-focus-color: -color-primario;   /* borde del control con el foco */
+    -fx-font-size: 14px;
+    -fx-background-color: #f7f7fb;
+}
+
+.titulo {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -color-primario;
+}
+
+.boton-primario {
+    -fx-background-color: -color-primario;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6;
+    -fx-padding: 6 18 6 18;
+}
+
+.boton-primario:hover {
+    -fx-background-color: derive(-color-primario, -20%);
+}
+
+.campo-error {
+    -fx-border-color: #b91c1c;
+    -fx-border-width: 2;
+    -fx-border-radius: 3;
+}
+
+.mensaje-ok {
+    -fx-text-fill: #15803d;
+    -fx-font-weight: bold;
+}
+
+.mensaje-error {
+    -fx-text-fill: #b91c1c;
+}
+
