@@ -1,0 +1,15 @@
+/* Tema oscuro: se añade DESPUÉS de estilos.css y sobrescribe algunos valores */
+.root {
+    -fx-base: #3b3b4f;                    /* color base de los controles */
+    -fx-background: #1f1f2b;              /* fondo: Modena calcula textos claros */
+    -fx-control-inner-background: #2a2a3a;/* interior de campos y listas */
+    -fx-background-color: -fx-background;
+}
+
+.mensaje-ok {
+    -fx-text-fill: #4ade80;
+}
+
+.mensaje-error {
+    -fx-text-fill: #f87171;
+}

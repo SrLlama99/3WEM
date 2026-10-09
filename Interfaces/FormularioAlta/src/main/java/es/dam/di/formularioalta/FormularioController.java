@@ -2,6 +2,7 @@ package es.dam.di.formularioalta;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -26,6 +27,7 @@ public class FormularioController {
                 SpinnerValueFactory.IntegerSpinnerValueFactory(1, 8, 6));
 // Enviar solo se activa si se aceptan las condiciones (binding)
         btnEnviar.disableProperty().bind(chkCondiciones.selectedProperty().not());
+        cpPrimario.setValue(Color.web("#5a4fcf"));
     }
     @FXML
     private void enviar() {
@@ -33,6 +35,7 @@ public class FormularioController {
         String nombre = txtNombre.getText().trim();
         String correo = txtCorreo.getText().trim();
         LocalDate fecha = dpNacimiento.getValue();
+        RadioButton curso = (RadioButton) tgCurso.getSelectedToggle();
         boolean nombreMal = nombre.isEmpty();
         boolean correoMal = !correo.matches("[^@\\s]+@[^@\\s]+\\.[^@\\s]+");
         boolean cicloMal = cbCiclo.getValue() == null;
@@ -43,10 +46,23 @@ public class FormularioController {
         if (cicloMal) errores.add("Elige un ciclo.");
         if (fechaMal) errores.add("Indica una fecha de nacimiento anterior a hoy.");
 
+        if (errores.isEmpty()){
+            mostrar("Inscripción registrada: " + nombre + " · " + curso.getText() + " " + cbCiclo.getValue()
+                    + " · " + spnModulos.getValue() + " módulos.", true);
+        } else {
+            String err ="";
+            for (String ers : errores){
+                err += "\n"+ers;
+            }
+            mostrar(err, false);
+        }
+
         marcar(txtNombre, nombreMal);
         marcar(txtCorreo, correoMal);
         marcar(cbCiclo, cicloMal);
         marcar(dpNacimiento, fechaMal);
+
+
 
     }
     @FXML
@@ -69,5 +85,29 @@ public class FormularioController {
             campo.getStyleClass().add("campo-error");
         }
     }
+
+    @FXML private BorderPane raiz;
+    @FXML private ColorPicker cpPrimario;
+    @FXML private ToggleButton tgbOscuro;
+
+    @FXML
+    private void cambiarColor() {
+        Color c = cpPrimario.getValue();
+        String hex = String.format("#%02x%02x%02x",
+                Math.round(c.getRed() * 255), Math.round(c.getGreen() * 255), Math.round(c.getBlue() * 255));
+        // Estilo en línea: redefine la variable de color para toda la ventana
+        raiz.setStyle("-color-primario: " + hex + ";");
+    }
+
+    @FXML
+    private void cambiarTema() {
+        String oscuro = HelloApplication.class.getResource("oscuro.css").toExternalForm();
+        if (tgbOscuro.isSelected()) {
+            raiz.getStylesheets().add(oscuro);
+        } else {
+            raiz.getStylesheets().remove(oscuro);
+        }
+    }
+
 
 }

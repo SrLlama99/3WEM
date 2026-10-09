@@ -3,12 +3,14 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ColorPicker?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -16,24 +18,24 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="raiz" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="540.0" stylesheets="@estilos.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.dam.di.formularioalta.FormularioController">
+<BorderPane fx:id="raiz" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" stylesheets="@estilos.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="es.dam.di.formularioalta.FormularioController">
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
    </padding>
    <top>
-      <Label text="Inscripción en el ciclo" BorderPane.alignment="CENTER">
-         <font>
-            <Font name="System Bold" size="22.0" />
-         </font>
+      <HBox alignment="CENTER_LEFT" spacing="10.0" BorderPane.alignment="CENTER_LEFT">
          <BorderPane.margin>
-            <Insets />
+            <Insets bottom="14.0" />
          </BorderPane.margin>
-         <padding>
-            <Insets left="14.0" />
-         </padding>
-      </Label>
+         <children>
+            <Label maxWidth="1.7976931348623157E308" minWidth="-Infinity" styleClass="titulo" text="Inscripción en el ciclo" HBox.hgrow="ALWAYS">
+            </Label>
+            <Label minWidth="-Infinity" text="Color:" />
+            <ColorPicker fx:id="cpPrimario" onAction="#cambiarColor" />
+            <ToggleButton fx:id="tgbOscuro" minWidth="-Infinity" mnemonicParsing="false" onAction="#cambiarTema" text="Modo Oscuro" />
+         </children>
+      </HBox>
    </top>
    <center>
       <GridPane hgap="12.0" vgap="10.0" BorderPane.alignment="CENTER">
