@@ -8,20 +8,32 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountCircle
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.Mail
+import androidx.compose.material.icons.filled.Phone
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.layout
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.p1_tarjetapresentacion_rodrigo_adrian.ui.theme.P1_TarjetaPresentacion_Rodrigo_AdrianTheme
+import java.nio.file.WatchEvent
+import kotlin.math.ulp
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,9 +58,7 @@ class MainActivity : ComponentActivity() {
 fun Presentation(name: String, title: String, phoneNumber: String, socialMedia: String, mail: String, modifier: Modifier = Modifier) {
 
     Row(
-        verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier
-            .padding(bottom = 20.dp)
+        verticalAlignment = Alignment.CenterVertically
     ) {
         Column() {
 
@@ -91,6 +101,74 @@ fun Presentation(name: String, title: String, phoneNumber: String, socialMedia: 
                     text = title,
                     fontSize = 12.sp
                 )
+            }
+        }
+    }
+    Box(
+        modifier = modifier.fillMaxSize(),
+        contentAlignment = Alignment.BottomCenter
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(bottom = 10.dp)
+        ) {
+            Spacer(modifier = Modifier.weight(0.35f))
+
+            Column(
+                verticalArrangement = Arrangement.spacedBy(8.dp),
+                modifier = Modifier.weight(0.65f)
+            ) {
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Phone,
+                        contentDescription = "Teléfono",
+                        tint = Color.Black,
+                        modifier = Modifier.size(20.dp)
+                    )
+                    Text(
+                        text = phoneNumber,
+                        fontSize = 12.sp,
+                        modifier = Modifier.padding(start = 12.dp)
+                    )
+                }
+
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.AccountCircle,
+                        contentDescription = "Red Social",
+                        tint = Color.Black,
+                        modifier = Modifier.size(20.dp)
+                    )
+                    Text(
+                        text = socialMedia,
+                        fontSize = 12.sp,
+                        modifier = Modifier.padding(start = 12.dp)
+                    )
+                }
+
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Mail,
+                        contentDescription = "Correo",
+                        tint = Color.Black,
+                        modifier = Modifier.size(20.dp)
+                    )
+                    Text(
+                        text = mail,
+                        fontSize = 12.sp,
+                        modifier = Modifier.padding(start = 12.dp)
+                    )
+                }
             }
         }
     }
