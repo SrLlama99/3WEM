@@ -2,14 +2,16 @@
 fallo = 0
 intentos = 0
 adivinado = False
+abecedario = "ABCDEFGFHIJKLMNÑOPQRSTUVWXYZ"
+tildes = "ÁÉÍÓÚÜ"
+sinTilde = "AEIOUU"
+letrasUsadas = ""
+
+# PETICION DE PALABRA + VARIABLES RELACOINADAS
 palabra = input("Introduce la palabra secreta: \n")
 palabra = palabra.upper()
 longitud = len(palabra)
 palabraHash = "_" * longitud
-abecedario = "ABCDEFGFHIJKLMNÑOPQRSTUVWXYZ"
-tildes = "ÁÉÍÓÚ"
-sinTilde = "AEIOU"
-letrasUsadas = ""
 
 # Depurar la palabra para que no tenga tildes (utilizo j porque lo creo despues de tener ya creado i)
 for j in range(longitud):
